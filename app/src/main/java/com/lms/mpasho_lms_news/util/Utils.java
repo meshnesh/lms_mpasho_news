@@ -13,7 +13,7 @@ import java.util.Random;
 
 public class Utils {
 
-    public static ColorDrawable[] vibrantLightColorList =
+    private static ColorDrawable[] vibrantLightColorList =
             {
                     new ColorDrawable(Color.parseColor("#ffeead")),
                     new ColorDrawable(Color.parseColor("#93cfb3")),
@@ -65,7 +65,7 @@ public class Utils {
         return country.toLowerCase();
     }
 
-    public static String getLanguage(){
+    public static String getLanguage() {
         Locale locale = Locale.getDefault();
         String country = String.valueOf(locale.getLanguage());
         return country.toLowerCase();

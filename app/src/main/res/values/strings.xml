@@ -9,4 +9,6 @@
     <string name="date">01 January 1990</string>
     <string name="search">Search</string>
     <string name="settings">Settings</string>
+    <string name="share">Share</string>
+    <string name="open_with_browser">Open with browser</string>
 </resources>

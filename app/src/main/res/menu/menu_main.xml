@@ -13,10 +13,5 @@
         app:showAsAction="collapseActionView|ifRoom"
         android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
-    <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/settings"
-        app:showAsAction="never"/>
 
 </menu>

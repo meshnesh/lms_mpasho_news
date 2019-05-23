@@ -3,7 +3,6 @@ package com.lms.mpasho_lms_news.view;
 import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
@@ -18,19 +17,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.lms.mpasho_lms_news.adapter.Adapter;
 import com.lms.mpasho_lms_news.R;
-import com.lms.mpasho_lms_news.util.Utils;
+import com.lms.mpasho_lms_news.adapter.Adapter;
 import com.lms.mpasho_lms_news.api.ApiClient;
 import com.lms.mpasho_lms_news.api.ApiInterface;
 import com.lms.mpasho_lms_news.models.Article;
 import com.lms.mpasho_lms_news.models.News;
+import com.lms.mpasho_lms_news.util.Utils;
 import com.lms.mpasho_lms_news.view.details.NewsDetailActivity;
 
 import java.util.ArrayList;
@@ -48,10 +44,6 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     private List<Article> articles = new ArrayList<>();
     private Adapter adapter;
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RelativeLayout errorLayout;
-    private ImageView errorImage;
-    private TextView errorTitle, errorMessage;
-    private Button btnRetry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
 
-       onLoadingSwipeRefresh("");
+        onLoadingSwipeRefresh("");
 
     }
 
@@ -128,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
-       inflater.inflate(R.menu.menu_main, menu);
+        inflater.inflate(R.menu.menu_main, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
         final SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
@@ -138,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                if (query.length() > 2){
+                if (query.length() > 2) {
                     onLoadingSwipeRefresh(query);
                 }
                 return false;
@@ -171,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
         );
     }
 
-    private void initListener(){
+    private void initListener() {
 
         adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
             @Override
@@ -182,13 +174,13 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 Article article = articles.get(position);
                 intent.putExtra("url", article.getUrl());
                 intent.putExtra("title", article.getTitle());
-                intent.putExtra("img",  article.getUrlToImage());
-                intent.putExtra("date",  article.getPublishedAt());
-                intent.putExtra("source",  article.getSource().getName());
-                intent.putExtra("author",  article.getAuthor());
+                intent.putExtra("img", article.getUrlToImage());
+                intent.putExtra("date", article.getPublishedAt());
+                intent.putExtra("source", article.getSource().getName());
+                intent.putExtra("author", article.getAuthor());
 
                 Pair<View, String> pair;
-                pair = Pair.create((View)imageView, ViewCompat.getTransitionName(imageView));
+                pair = Pair.create((View) imageView, ViewCompat.getTransitionName(imageView));
                 ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
                         MainActivity.this,
                         pair
