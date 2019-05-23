@@ -1,7 +1,8 @@
-package com.lms.mpasho_lms_news;
+package com.lms.mpasho_lms_news.view;
 
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -12,16 +13,21 @@ import android.support.v7.widget.SearchView;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lms.mpasho_lms_news.adapter.Adapter;
+import com.lms.mpasho_lms_news.R;
+import com.lms.mpasho_lms_news.util.Utils;
 import com.lms.mpasho_lms_news.api.ApiClient;
 import com.lms.mpasho_lms_news.api.ApiInterface;
 import com.lms.mpasho_lms_news.models.Article;
 import com.lms.mpasho_lms_news.models.News;
+import com.lms.mpasho_lms_news.view.details.NewsDetailActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -96,6 +102,8 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     recyclerView.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
 
+                    initListener();
+
                     swipeRefreshLayout.setRefreshing(false);
 
                 } else {
@@ -157,5 +165,42 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                     }
                 }
         );
+    }
+
+    private void initListener(){
+
+        adapter.setOnItemClickListener(new Adapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                ImageView imageView = view.findViewById(R.id.img);
+                Intent intent = new Intent(MainActivity.this, NewsDetailActivity.class);
+
+                Article article = articles.get(position);
+                intent.putExtra("url", article.getUrl());
+                intent.putExtra("title", article.getTitle());
+                intent.putExtra("img",  article.getUrlToImage());
+                intent.putExtra("date",  article.getPublishedAt());
+                intent.putExtra("source",  article.getSource().getName());
+                intent.putExtra("author",  article.getAuthor());
+
+                startActivity(intent);
+
+//                Pair<View, String> pair;
+//                pair = Pair.create((View)imageView, ViewCompat.getTransitionName(imageView));
+//                ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation(
+//                        MainActivity.this,
+//                        pair
+//                );
+//
+//
+//                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                    startActivity(intent, optionsCompat.toBundle());
+//                }else {
+//                    startActivity(intent);
+//                }
+
+            }
+        });
+
     }
 }

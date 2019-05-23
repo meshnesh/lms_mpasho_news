@@ -1,4 +1,4 @@
-package com.lms.mpasho_lms_news;
+package com.lms.mpasho_lms_news.util;
 
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
