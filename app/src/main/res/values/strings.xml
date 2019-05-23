@@ -22,4 +22,7 @@
     <string name="no_result">No Result</string>
     <string name="oops">Oops..</string>
     <string name="error_network_failure">Network failure, Please Try Again</string>
+    <string name="sahre_from">Share from the News App</string>
+    <string name="share_with">Share with :</string>
+    <string name="cannot_share">Hmm.. Sorry,  \\nCannot be shared</string>
 </resources>
