@@ -21,8 +21,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.lms.mpasho_lms_news.R;
 import com.lms.mpasho_lms_news.adapter.Adapter;
 import com.lms.mpasho_lms_news.api.ApiClient;
