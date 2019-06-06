@@ -1,15 +1,45 @@
 package com.lms.mpasho_lms_news.models;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 public class News {
 
+    @SerializedName("status")
+    @Expose
+    private String status;
 
-    private final String status, article;
-    private final Integer totalResult;
+    @SerializedName("totalResult")
+    @Expose
+    private int totalResult;
 
-    public News(String status, String article, Integer totalResult) {
+    @SerializedName("articles")
+    @Expose
+    private List<Article> article;
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
         this.status = status;
-        this.article = article;
+    }
+
+    public int getTotalResult() {
+        return totalResult;
+    }
+
+    public void setTotalResult(int totalResult) {
         this.totalResult = totalResult;
+    }
+
+    public List<Article> getArticle() {
+        return article;
+    }
+
+    public void setArticle(List<Article> article) {
+        this.article = article;
     }
 }
