@@ -5,6 +5,7 @@ import android.support.test.espresso.intent.rule.IntentsTestRule;
 import android.support.test.runner.AndroidJUnit4;
 
 import com.lms.mpasho_lms_news.models.Article;
+import com.lms.mpasho_lms_news.view.MainActivity;
 import com.lms.mpasho_lms_news.view.details.NewsDetailActivity;
 
 import org.junit.Before;
@@ -20,26 +21,26 @@ import static android.support.test.espresso.matcher.ViewMatchers.withText;
 @RunWith(AndroidJUnit4.class)
 public class NewsDetailTest {
 
-    private static final Article MOCKARTICLE = new Article("author", "title",
-            "description", "url", "urlToImage");
+//    private static final Article MOCKARTICLE = new Article("author", "title",
+//            "description", "url", "urlToImage");
 
     @Rule
-    public IntentsTestRule<NewsDetailActivity> newsDetailActivityIntentsTestRule =
-            new IntentsTestRule<>(NewsDetailActivity.class, true, false);
+    public IntentsTestRule newsDetailActivityIntentsTestRule =
+            new IntentsTestRule<>(MainActivity.class);
 
-    @Before
-    public void intentWithArticles() {
-        Intent mockIntent = new Intent();
-        mockIntent.putExtra("title", MOCKARTICLE.getTitle());
-        mockIntent.putExtra("author", MOCKARTICLE.getAuthor());
-        mockIntent.putExtra("description", MOCKARTICLE.getDescription());
-        mockIntent.putExtra("url", MOCKARTICLE.getUrl());
-        mockIntent.putExtra("urlToImage", MOCKARTICLE.getUrlToImage());
-        newsDetailActivityIntentsTestRule.launchActivity(mockIntent);
-    }
+//    @Before
+//    public void intentWithArticles() {
+//        Intent mockIntent = new Intent();
+//        mockIntent.putExtra("title", MOCKARTICLE.getTitle());
+//        mockIntent.putExtra("author", MOCKARTICLE.getAuthor());
+//        mockIntent.putExtra("description", MOCKARTICLE.getDescription());
+//        mockIntent.putExtra("url", MOCKARTICLE.getUrl());
+//        mockIntent.putExtra("urlToImage", MOCKARTICLE.getUrlToImage());
+//        newsDetailActivityIntentsTestRule.launchActivity(mockIntent);
+//    }
 
     @Test
-    public void articleDetailsDisplayed() {
-        onView(withId(R.id.title)).check(matches(withText("Title of News")));
+    public void buttonClick_goToNewsDetailActivity() {
+        onView(withId(R.id.title_on_appbar)).check(matches(withText("Hot News")));
     }
 }

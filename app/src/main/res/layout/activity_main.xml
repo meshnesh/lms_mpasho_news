@@ -25,10 +25,11 @@
                     android:layout_height="match_parent">
 
                     <TextView
+                        android:id="@+id/title_appbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
-                        android:text="@string/app_headline"
+                        android:text="Hot News"
                         android:fontFamily="sans-serif-light"
                         android:textSize="16sp"
                         android:layout_marginLeft="16dp"
