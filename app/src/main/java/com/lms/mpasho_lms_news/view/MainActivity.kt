@@ -2,11 +2,7 @@ package com.lms.mpasho_lms_news.view
 
 import android.app.SearchManager
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
-import android.support.v4.app.ActivityOptionsCompat
-import android.support.v4.util.Pair
-import android.support.v4.view.ViewCompat
 import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.DefaultItemAnimator
@@ -26,13 +22,10 @@ import com.lms.mpasho_lms_news.api.ApiInterface
 import com.lms.mpasho_lms_news.models.Article
 import com.lms.mpasho_lms_news.models.News
 import com.lms.mpasho_lms_news.util.Utils
-import com.lms.mpasho_lms_news.view.details.NewsDetailActivity
-
-import java.util.ArrayList
-
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     lateinit var recyclerView: RecyclerView
@@ -72,7 +65,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     }
 
 
-    fun loadJson(keyword: String) {
+    private fun loadJson(keyword: String) {
 
         errorLayout!!.visibility = View.GONE
         swipeRefreshLayout!!.isRefreshing = true
@@ -84,10 +77,10 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
 
         val call: Call<News>
 
-        if (keyword.length > 0) {
-            call = apiInterface?.getNewsSearch(keyword, language, "publishedAt", API_KEY)!!
+        call = if (keyword.isNotEmpty()) {
+            apiInterface?.getNewsSearch(keyword, language, "publishedAt", API_KEY)!!
         } else {
-            call = apiInterface?.getNews(country, API_KEY)!!
+            apiInterface?.getNews(country, API_KEY)!!
         }
 
         call.enqueue(object : Callback<News> {
@@ -95,7 +88,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
             override fun onResponse(call: Call<News>, response: Response<News>) {
                 if (response.isSuccessful && response.body()!!.article != null) {
 
-                    if (!articles!!.isEmpty()) {
+                    if (articles!!.isNotEmpty()) {
                         articles!!.clear()
                     }
 
@@ -111,11 +104,10 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
                 } else {
 
                     swipeRefreshLayout!!.isRefreshing = false
-                    val errorCode: String
-                    when (response.code()) {
-                        404 -> errorCode = getString(R.string.error_404)
-                        500 -> errorCode = getString(R.string.error_500)
-                        else -> errorCode = getString(R.string.error_unknown)
+                    val errorCode: String = when (response.code()) {
+                        404 -> getString(R.string.error_404)
+                        500 -> getString(R.string.error_500)
+                        else -> getString(R.string.error_unknown)
                     }
 
                     showErrorMessage(
@@ -212,7 +204,6 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     companion object {
-
-        val API_KEY = "ccf1c18922cb4be88aeb1b6a08b13a5d"
+        const val API_KEY = "ccf1c18922cb4be88aeb1b6a08b13a5d"
     }
 }

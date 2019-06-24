@@ -1,5 +1,6 @@
 package com.lms.mpasho_lms_news.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.support.v7.widget.RecyclerView
@@ -31,6 +32,7 @@ class Adapter(private val articles: MutableList<Article>?, private val context: 
         return MyViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n", "CheckResult")
     override fun onBindViewHolder(viewHolder: MyViewHolder, position: Int) {
         val model = articles?.get(position)
 

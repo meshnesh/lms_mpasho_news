@@ -1,5 +1,6 @@
 package com.lms.mpasho_lms_news.api
 
+import android.annotation.SuppressLint
 import java.security.cert.CertificateException
 
 import javax.net.ssl.HostnameVerifier
@@ -31,14 +32,16 @@ object ApiClient {
     // Create a trust manager that does not validate certificate chains
     // Install the all-trusting trust manager
     // Create an ssl socket factory with our all-trusting manager
-    val unsafeOkHttpClient: OkHttpClient.Builder
+    private val unsafeOkHttpClient: OkHttpClient.Builder
         get() {
             try {
                 val trustAllCerts = arrayOf<TrustManager>(object : X509TrustManager {
+                    @SuppressLint("TrustAllX509TrustManager")
                     @Throws(CertificateException::class)
                     override fun checkClientTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
                     }
 
+                    @SuppressLint("TrustAllX509TrustManager")
                     @Throws(CertificateException::class)
                     override fun checkServerTrusted(chain: Array<java.security.cert.X509Certificate>, authType: String) {
                     }
@@ -53,7 +56,7 @@ object ApiClient {
 
                 val builder = OkHttpClient.Builder()
                 builder.sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
-                builder.hostnameVerifier { hostname, session -> true }
+                builder.hostnameVerifier { _, _ -> true }
                 return builder
             } catch (e: Exception) {
                 throw RuntimeException(e)
