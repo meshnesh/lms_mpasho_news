@@ -30,10 +30,6 @@ This project is built with Gradle, the [Android Gradle plugin](http://tools.andr
 * Run
     > $ ./gradlew test
     
-## Code Coverage
-* Implemented Jacoco to run the coverage for the application
-
-    
 ## Built With
 
 * [Android Tools](https://developer.android.com/) - Used to develop mobile, watch and T.V applications
