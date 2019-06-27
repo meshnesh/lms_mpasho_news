@@ -78,17 +78,17 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
 
         appbar_title.setText(mSource);
         appbar_subtitle.setText(mUrl);
-        date.setText(Utils.DateFormat(mDate));
+//        date.setText(Utils.DateFormat(mDate));
         title.setText(mTitle);
 
-        String author;
-        if (mAuthor != null) {
-            author = " \u2022 " + mAuthor;
-        } else {
-            author = "";
-        }
+//        String author;
+//        if (mAuthor != null) {
+//            author = " \u2022 " + mAuthor;
+//        } else {
+//            author = "";
+//        }
 
-        time.setText(mSource + author + " \u2022 " + Utils.DateToTimeFormat(mDate));
+//        time.setText(mSource + author + " \u2022 " + Utils.DateToTimeFormat(mDate));
 
         initWebView(mUrl);
 
