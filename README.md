@@ -29,6 +29,12 @@ This project is built with Gradle, the [Android Gradle plugin](http://tools.andr
 
 * Run
     > $ ./gradlew test
+
+## Coverage
+
+* Coverage was implemented by Jacoco
+
+
     
 ## Built With
 
