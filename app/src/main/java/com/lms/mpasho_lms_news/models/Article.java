@@ -30,10 +30,6 @@ public class Article {
     @Expose
     private String urlToImage;
 
-//    @SerializedName("publishedAt")
-//    @Expose
-//    private String publishedAt;
-
     public Source getSource() {
         return source;
     }

@@ -47,6 +47,8 @@
             </android.support.v4.widget.NestedScrollView>
         </android.support.v4.widget.SwipeRefreshLayout>
 
-        <include layout="@layout/error" />
+        <include
+            layout="@layout/error"
+            android:id="@+id/error_layout"/>
 
 </LinearLayout>

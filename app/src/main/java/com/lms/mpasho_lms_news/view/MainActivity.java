@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     public void loadJson(final String keyword) {
 
-        errorLayout.setVisibility(View.GONE);
+//        errorLayout.setVisibility(View.VISIBLE);
         swipeRefreshLayout.setRefreshing(true);
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);

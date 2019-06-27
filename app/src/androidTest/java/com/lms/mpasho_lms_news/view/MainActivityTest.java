@@ -1,6 +1,5 @@
 package com.lms.mpasho_lms_news.view;
 
-import android.app.Activity;
 import android.app.Instrumentation;
 import android.support.test.rule.ActivityTestRule;
 import android.view.View;
@@ -15,11 +14,11 @@ import org.junit.Test;
 
 import static android.support.test.InstrumentationRegistry.getInstrumentation;
 import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.action.ViewActions.click;
+import static android.support.test.espresso.action.ViewActions.swipeDown;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 public class MainActivityTest {
 
@@ -28,6 +27,10 @@ public class MainActivityTest {
             new ActivityTestRule<>(MainActivity.class);
 
     private MainActivity mAactivity = null;
+
+
+    Instrumentation.ActivityMonitor monitor = getInstrumentation().addMonitor(
+            NewsDetailActivity.class.getName(), null, false);
 
     @Before
     public void setUp() throws Exception {
@@ -51,6 +54,16 @@ public class MainActivityTest {
     @Test
     public void articleAppBarDisplayed() {
         onView(withId(R.id.app_headline)).check(matches(withText("Mpasho News Headlines")));
+    }
+
+    @Test
+    public void articleSwipeRefreshLayoutCalled() {
+        onView(withId(R.id.swipe_refresh_layout)).perform(swipeDown());
+    }
+
+    @Test
+    public void includeErrorLayout() {
+        onView(withId(R.id.errorTitle)).check(matches(withText("Error Title")));
     }
 
     @After
