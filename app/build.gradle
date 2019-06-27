@@ -3,7 +3,7 @@ apply plugin: 'jacoco'
 
 android {
     dataBinding {
-        enabled = true
+        enabled = false
     }
     compileSdkVersion 28
     defaultConfig {
