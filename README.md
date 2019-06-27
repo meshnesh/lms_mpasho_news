@@ -33,7 +33,7 @@ This project is built with Gradle, the [Android Gradle plugin](http://tools.andr
 ## Coverage
 
 * Coverage was implemented by Jacoco
-
+[![Application Coverage](https://github.com/meshnesh/lms_mpasho_news/blob/tesing_application/app/src/main/res/drawable/coverage.png)]()
 
     
 ## Built With
