@@ -1,5 +1,5 @@
 # Level Up Application
-[![CircleCI](https://circleci.com/gh/meshnesh/lms_mpasho_news.svg?style=svg)](https://circleci.com/gh/meshnesh/lms_mpasho_news)
+[![CircleCI](https://circleci.com/gh/meshnesh/lms_mpasho_news.svg?style=svg)](https://circleci.com/gh/meshnesh/lms_mpasho_news) [![Maintainability](https://api.codeclimate.com/v1/badges/2fbc5549effe96daf941/maintainability)](https://codeclimate.com/github/meshnesh/lms_mpasho_news/maintainability)
 
 This is an Android application that consumes [NewsApi](https://newsapi.org/) Top Stories API and displays the following headlines and abstracts:
 
