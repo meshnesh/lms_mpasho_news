@@ -78,17 +78,8 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
 
         appbar_title.setText(mSource);
         appbar_subtitle.setText(mUrl);
-        date.setText(Utils.DateFormat(mDate));
+//        date.setText(Utils.DateFormat(mDate));
         title.setText(mTitle);
-
-        String author;
-        if (mAuthor != null) {
-            author = " \u2022 " + mAuthor;
-        } else {
-            author = "";
-        }
-
-        time.setText(mSource + author + " \u2022 " + Utils.DateToTimeFormat(mDate));
 
         initWebView(mUrl);
 
@@ -147,25 +138,25 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
 
         int id = item.getItemId();
 
-        if (id == R.id.view_web) {
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(mUrl));
-            startActivity(i);
-            return true;
-        } else if (id == R.id.share) {
-            try {
-
-                Intent i = new Intent(Intent.ACTION_SEND);
-                i.setType("text/plan");
-                i.putExtra(Intent.EXTRA_SUBJECT, mSource);
-                String body = mTitle + "\n" + mUrl + "\n" + getString(R.string.sahre_from) + "\n";
-                i.putExtra(Intent.EXTRA_TEXT, body);
-                startActivity(Intent.createChooser(i, getString(R.string.share_with)));
-
-            } catch (Exception e) {
-                Toast.makeText(this, getString(R.string.cannot_share), Toast.LENGTH_SHORT).show();
-            }
-        }
+//        if (id == R.id.view_web) {
+//            Intent i = new Intent(Intent.ACTION_VIEW);
+//            i.setData(Uri.parse(mUrl));
+//            startActivity(i);
+//            return true;
+//        } else if (id == R.id.share) {
+//            try {
+//
+//                Intent i = new Intent(Intent.ACTION_SEND);
+//                i.setType("text/plan");
+//                i.putExtra(Intent.EXTRA_SUBJECT, mSource);
+//                String body = mTitle + "\n" + mUrl + "\n" + getString(R.string.sahre_from) + "\n";
+//                i.putExtra(Intent.EXTRA_TEXT, body);
+//                startActivity(Intent.createChooser(i, getString(R.string.share_with)));
+//
+//            } catch (Exception e) {
+//                Toast.makeText(this, getString(R.string.cannot_share), Toast.LENGTH_SHORT).show();
+//            }
+//        }
         return super.onOptionsItemSelected(item);
     }
 }

@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     public void loadJson(final String keyword) {
 
-        errorLayout.setVisibility(View.GONE);
+//        errorLayout.setVisibility(View.VISIBLE);
         swipeRefreshLayout.setRefreshing(true);
 
         ApiInterface apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
@@ -209,7 +209,7 @@ public class MainActivity extends AppCompatActivity implements SwipeRefreshLayou
                 intent.putExtra("url", article.getUrl());
                 intent.putExtra("title", article.getTitle());
                 intent.putExtra("img", article.getUrlToImage());
-                intent.putExtra("date", article.getPublishedAt());
+//                intent.putExtra("date", article.getPublishedAt());
                 intent.putExtra("source", article.getSource().getName());
                 intent.putExtra("author", article.getAuthor());
 
